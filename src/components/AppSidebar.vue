@@ -70,7 +70,7 @@ const emit = defineEmits([
   border: none;
   font-size: 16px;
   font-weight: 500;
-  color: var(--color-background-light);
+  color: var(--color-on-primary);
   cursor: pointer;
   text-align: left;
   box-shadow: var(--shadow-sm);
@@ -85,7 +85,7 @@ const emit = defineEmits([
 }
 
 .sidebar button:disabled {
-  background-color: #ccc !important;
+  background-color: var(--color-border-light) !important;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -96,7 +96,7 @@ const emit = defineEmits([
 }
 
 .sidebar .edit-student {
-  background-color: #60a5fa; /* Specific shade of blue */
+  background-color: var(--color-secondary-dark);
 }
 
 .sidebar .delete-student {

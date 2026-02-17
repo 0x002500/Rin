@@ -78,7 +78,7 @@ const handleRowClick = (student: Student) => {
 .student-table th {
   background-color: var(--color-background-lightest-gray);
   font-weight: 500;
-  color: #4b5563; /* Specific shade of dark gray */
+  color: var(--color-text-medium);
   position: sticky;
   top: 0;
 }
@@ -88,7 +88,7 @@ const handleRowClick = (student: Student) => {
 }
 
 .student-table tbody tr:hover {
-  background-color: #f1f5f9; /* Specific shade of light blue-gray */
+  background-color: var(--color-background-light-gray);
 }
 
 .student-table tbody tr.selected {

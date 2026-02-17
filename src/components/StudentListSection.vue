@@ -113,7 +113,7 @@ const handleSelectStudent = (studentId: string | null) => {
 
 .search-container .search-button {
   background-color: var(--color-secondary);
-  color: var(--color-background-light);
+  color: var(--color-on-primary);
 }
 
 .search-container .search-button:hover {
@@ -121,12 +121,12 @@ const handleSelectStudent = (studentId: string | null) => {
 }
 
 .search-container .clear-button {
-  background-color: #d1d5db; /* Specific shade of gray */
-  color: #374151; /* Specific shade of dark gray */
+  background-color: var(--color-border-light); /* neutral */
+  color: var(--color-text-dark);
 }
 
 .search-container .clear-button:hover {
-  background-color: #9ca3af; /* Specific shade of gray */
+  background-color: var(--color-border);
 }
 
 .student-table-container {

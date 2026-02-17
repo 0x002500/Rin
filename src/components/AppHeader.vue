@@ -1,15 +1,42 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+const isDark = ref(false)
+
+const applyTheme = (dark: boolean) => {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+  try { localStorage.setItem('theme', dark ? 'dark' : 'light') } catch (e) {}
+  isDark.value = dark
+}
+
+const toggleTheme = () => applyTheme(!isDark.value)
+
+onMounted(() => {
+  const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null
+  if (stored === 'dark' || stored === 'light') {
+    applyTheme(stored === 'dark')
+    return
+  }
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  applyTheme(prefersDark)
+})
+</script>
 
 <template>
   <div class="header">
     <h1>作业缺交登记系统</h1>
+    <div class="buttons">
+      <button class="theme-toggle" @click="toggleTheme" :title="isDark ? '切换为浅色模式' : '切换为深色模式'">
+        {{ isDark ? '☀️' : '🌙' }}
+      </button>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .header {
   background-color: var(--color-primary);
-  color: var(--color-background-light);
+  color: var(--color-on-primary);
   padding: var(--spacing-md) var(--spacing-xl);
   display: flex;
   align-items: center;
@@ -31,7 +58,7 @@
 
 .header .buttons button {
   background-color: var(--color-secondary);
-  color: var(--color-background-light);
+  color: var(--color-on-primary);
   border: none;
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--border-radius-sm);

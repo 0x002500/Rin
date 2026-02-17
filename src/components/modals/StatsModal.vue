@@ -75,7 +75,7 @@ const handleOverlayClick = (event: MouseEvent) => {
 .modal-content {
   background-color: var(--color-background-light);
   padding: var(--spacing-xl);
-  border: 1px solid #888;
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
   width: 90%;
   max-width: 500px;
@@ -123,7 +123,7 @@ const handleOverlayClick = (event: MouseEvent) => {
 
 .modal-footer .confirm-button {
   background-color: var(--color-primary);
-  color: var(--color-background-light);
+  color: var(--color-on-primary);
 }
 
 .modal-footer .confirm-button:hover {
@@ -131,7 +131,7 @@ const handleOverlayClick = (event: MouseEvent) => {
 }
 
 .close-button {
-  color: #aaa;
+  color: var(--color-text-light);
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -139,6 +139,6 @@ const handleOverlayClick = (event: MouseEvent) => {
 
 .close-button:hover,
 .close-button:focus {
-  color: black;
+  color: var(--color-text-dark);
 }
 </style>
