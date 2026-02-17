@@ -1,0 +1,68 @@
+/* Using Google Fonts Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* CSS Reset and Global Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f2f5;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Root CSS Variables (Colors, Spacing, Breakpoints) */
+:root {
+  --color-primary: #1a73e8; /* Google Blue */
+  --color-primary-dark: #155bb3;
+  --color-secondary: #3b82f6; /* Lighter Blue */
+  --color-secondary-dark: #2563eb;
+  --color-accent-orange: #f9a825; /* Orange */
+  --color-accent-orange-dark: #f59e0b;
+  --color-accent-red: #ef4444; /* Red */
+  --color-accent-green: #10b981; /* Green */
+  --color-accent-light-green: #34d399; /* Light Green */
+  --color-accent-purple: #9333ea; /* Purple */
+
+  --color-text-dark: #333;
+  --color-text-medium: #555;
+  --color-text-light: #6b7280;
+  --color-text-placeholder: #888;
+
+  --color-background-light: #fff;
+  --color-background-gray: #f0f2f5;
+  --color-background-light-gray: #fafafa;
+  --color-background-lightest-gray: #f9fafb;
+  --color-background-selected: #c5d8ff;
+
+  --color-border: #e0e0e0;
+  --color-border-light: #ccc;
+
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 25px;
+
+  --border-radius-sm: 5px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 10px;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
