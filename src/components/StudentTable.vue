@@ -14,11 +14,14 @@ const props = defineProps({
 
 const emit = defineEmits(['select-student'])
 
+const makeKey = (student: Student) => `${student.id}@@${student.class}`
+
 const handleRowClick = (student: Student) => {
-  if (props.selectedStudentId === student.id) {
+  const key = makeKey(student)
+  if (props.selectedStudentId === key) {
     emit('select-student', null) // Deselect if already selected
   } else {
-    emit('select-student', student.id)
+    emit('select-student', key)
   }
 }
 </script>
@@ -37,8 +40,8 @@ const handleRowClick = (student: Student) => {
       <template v-if="students.length > 0">
         <tr
           v-for="student in students"
-          :key="student.id"
-          :class="{ selected: student.id === selectedStudentId }"
+          :key="student.id + '@@' + student.class"
+          :class="{ selected: (student.id + '@@' + student.class) === selectedStudentId }"
           @click="handleRowClick(student)"
         >
           <td>{{ student.name }}</td>

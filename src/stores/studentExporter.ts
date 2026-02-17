@@ -17,11 +17,13 @@ export function buildExportCsv(students: RepoStudent[], absences: RepoAbsence[])
 
   // Absence records
   csvContent += '\n\n缺交记录\n'
-  csvContent += '学生姓名,学号,作业名称,缺交日期,缺交原因\n'
+  csvContent += '学生姓名,学号,班级,作业名称,缺交日期,缺交原因\n'
   absences.forEach((absence) => {
-    const student = students.find((s) => s.id === absence.studentId)
+    const student = students.find(
+      (s) => s.id === absence.studentId && s.class === (absence as any).studentClass,
+    )
     const studentName = student ? student.name : '未知'
-    const row = `${studentName},${absence.studentId},${absence.homework},${absence.date},${absence.reason || '无'}`
+    const row = `${studentName},${absence.studentId},${(absence as any).studentClass || ''},${absence.homework},${absence.date},${absence.reason || '无'}`
     csvContent += row + '\n'
   })
 

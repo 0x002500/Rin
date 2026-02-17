@@ -36,7 +36,8 @@ const isStatsModalVisible = ref(false)
 const currentSelectedStudent = computed(() => studentStore.selectedStudent)
 const currentStudentAbsenceRecords = computed(() => {
   if (currentSelectedStudent.value) {
-    return studentStore.getAbsencesByStudentId(currentSelectedStudent.value.id)
+    const key = `${currentSelectedStudent.value.id}@@${currentSelectedStudent.value.class}`
+    return studentStore.getAbsencesByStudentKey(key)
   }
   return []
 })
@@ -97,8 +98,9 @@ const handleDeleteStudent = () => {
 const handleDeleteConfirm = () => {
   // Always close the modal to avoid it remaining open after deletion
   try {
-    if (currentSelectedStudent.value) {
-      studentStore.deleteStudent(currentSelectedStudent.value.id)
+      if (currentSelectedStudent.value) {
+      const key = `${currentSelectedStudent.value.id}@@${currentSelectedStudent.value.class}`
+      studentStore.deleteStudent(key)
       showInfoModal('成功', `已删除学生: ${currentSelectedStudent.value.name}`)
     } else {
       // Defensive: if no student selected, show a message
@@ -121,7 +123,8 @@ const handleAddEditSave = (studentData: StudentInput) => {
         showInfoModal('错误', '请先选择一个学生！')
         return
       }
-      studentStore.editStudent(currentSelectedStudent.value.id, studentData)
+      const key = `${currentSelectedStudent.value.id}@@${currentSelectedStudent.value.class}`
+      studentStore.editStudent(key, studentData)
       showInfoModal('成功', `已更新学生: ${studentData.name}`)
     }
   } catch (error) {
@@ -135,7 +138,8 @@ const handleAddEditSave = (studentData: StudentInput) => {
 const handleRegisterAbsenceSave = (homework: string, reason: string) => {
   try {
     if (currentSelectedStudent.value) {
-      studentStore.registerAbsence(currentSelectedStudent.value.id, homework, reason)
+      const key = `${currentSelectedStudent.value.id}@@${currentSelectedStudent.value.class}`
+      studentStore.registerAbsence(key, homework, reason)
       showInfoModal('成功', `已为 ${currentSelectedStudent.value.name} 登记作业缺交: ${homework}`)
     } else {
       showInfoModal('错误', '请先选择一个学生！')

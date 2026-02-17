@@ -7,6 +7,7 @@ export interface RepoStudent {
 
 export interface RepoAbsence {
   studentId: string
+  studentClass: string
   date: string
   homework: string
   reason: string
